@@ -1,0 +1,14 @@
+@use 'colors';
+
+/* ******* PAGES ******* */
+
+//Search
+.search-section {
+  display: flex;
+  flex-direction: column;
+}
+
+//Pet Dashboard
+.pets-dashboard-section {
+  background-color: colors.$white;
+}
