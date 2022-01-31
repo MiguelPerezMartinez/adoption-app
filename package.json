@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "postinstall": "\"cd app && npm install && \"cd server && npm install",
     "dev": "concurrently \"cd server && npm run dev \" \"cd app && npm start\""
   },
   "dependencies": {
