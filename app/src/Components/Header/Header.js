@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Logout from '../Logout'
+import { AiOutlineLogout, AiOutlineUpload, AiOutlineUser } from 'react-icons/ai'
 
 import { logout } from '../../services/firebase'
 
@@ -12,9 +12,9 @@ export default function Header() {
   return (
     <section className="header-container">
       <div></div>
-      <div>profile</div>
-      <div>upload</div>
-      <div onClick={handleLogout}>logout</div>
+      <AiOutlineUser />
+      <AiOutlineUpload />
+      <AiOutlineLogout onClick={handleLogout} />
     </section>
   )
 }

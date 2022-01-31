@@ -18,23 +18,27 @@
 
 //Header
 .header-container {
+  position: fixed;
   color: white;
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: colors.$darkerColor;
+  z-index: 1;
 }
 
 .header-container > * {
-  max-width: 80px;
+  width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 0.5rem;
   margin-right: 0.5rem;
-  border: 1px solid white;
+  padding: 0.2rem;
+  border: 2px solid colors.$lightColor;
 }
 
 .header-container > div:first-child {

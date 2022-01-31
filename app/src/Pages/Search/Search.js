@@ -15,10 +15,12 @@ export default function Search() {
     if (!user) navigate('/')
   }, [user])
   return (
-    <section className="search-section">
+    <>
       <Header />
-      <Searcher />
-      <Finder />
-    </section>
+      <section className="search-section">
+        <Searcher />
+        <Finder />
+      </section>
+    </>
   )
 }

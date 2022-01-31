@@ -7,16 +7,21 @@ export default function ResultsBox({ data, handleFavorite, favorite }) {
   return !data ? (
     ''
   ) : (
-    <Link
-      to={`/pet-dashboard/${data.id}`}
-      className="results-box-container"
-      data-id={data.id}
-    >
-      <div id="finder-photo" style={{ backgroundImage: `url(${data.photo})` }}>
-        .
-      </div>
-      <h1>{data.name}</h1>
+    <div className="results-box-container">
+      <Link
+        to={`/pet-dashboard/${data.id}`}
+        className="results-box-container"
+        data-id={data.id}
+      >
+        <div
+          id="finder-photo"
+          style={{ backgroundImage: `url(${data.photo})` }}
+        >
+          .
+        </div>
+        <h1>{data.name}</h1>
+      </Link>
       <Favorite handleFavorite={handleFavorite} favorite={favorite} />
-    </Link>
+    </div>
   )
 }

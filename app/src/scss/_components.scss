@@ -17,7 +17,6 @@
   justify-content: left;
   height: 80vh;
   margin: 0.5%;
-  padding: 0rem;
   background-color: colors.$white;
   border-radius: 1rem;
   margin-bottom: 2rem;
@@ -26,6 +25,12 @@
 .results-box-container:active {
   transform: scale(0.98);
   transition: all 0.2s;
+}
+
+.results-box-container > a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
 .results-box-container > * {
@@ -59,7 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: white;
   padding: 0.3rem;
 }
@@ -71,11 +76,11 @@
 @media screen and (min-width: 600px) {
   .results-box-container {
     width: 49%;
-    height: 50vh;
+    height: 60vh;
     margin-bottom: 0.5rem;
   }
 
-  .results-box-container > #finder-photo {
+  #finder-photo {
     min-height: 60%;
     height: 100%;
   }
@@ -87,10 +92,6 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .results-box-container {
-    width: 24%;
-  }
-
   .fav-icon {
     width: 40px;
     height: 40px;
