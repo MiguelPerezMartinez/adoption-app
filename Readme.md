@@ -1,4 +1,7 @@
 <h1>Embat tech challenge</h1>
+<h3>Miguel perez Martinez</h3>
+<br/>
+<h2>Use main branch</h2>
 
 To run this repository, you need to `npm install` from / and run the postinstall script.
 
