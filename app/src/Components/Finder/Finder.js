@@ -50,10 +50,10 @@ export default function Finder({ petName }) {
     }
   }, [favList, petName])
 
-  async function getFavorites() {
+  function getFavorites() {
     if (user.email) {
       const payload = { email: user.email }
-      await axios
+      axios
         .post(`${process.env.REACT_APP_URL}/users/get-favorites`, payload)
         .then((result) => {
           const { favList } = result.data
@@ -64,11 +64,10 @@ export default function Finder({ petName }) {
 
   async function handleFavorite(e) {
     const petId = e.target.parentNode.parentNode.getAttribute('data-id')
-    console.log(petId)
     const payload = { email: user.email, petId: petId }
     await axios
       .post(`${process.env.REACT_APP_URL}/users/handle-favorite`, payload)
-      .then((result) => {
+      .then(() => {
         getFavorites()
       })
   }
@@ -95,17 +94,12 @@ export default function Finder({ petName }) {
                   }
                 })}
               />
-              {pets.length % 2 ? (
-                <ResultsBox key={uuidv4()} data={false} />
-              ) : (
-                ''
-              )}
             </>
           ))
         ) : error ? (
-          <p key={uuidv4()}>{error}</p>
+          <p>{error}</p>
         ) : (
-          <p key={uuidv4()}>No results</p>
+          <p>No results</p>
         )}
       </div>
     )

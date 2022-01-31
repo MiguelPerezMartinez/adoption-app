@@ -14,9 +14,9 @@ export default function PetDashboard() {
     }
   }, [])
 
-  async function getPet() {
+  function getPet() {
     const payload = { id: id }
-    await axios
+    axios
       .post(`${process.env.REACT_APP_URL}/pets/get-pet`, payload)
       .then((result) => {
         let { pet } = result.data.data

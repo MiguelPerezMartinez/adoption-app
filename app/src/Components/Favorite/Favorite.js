@@ -5,7 +5,7 @@ export default function Favorite({ favorite, handleFavorite, petId }) {
 
   useEffect(() => {
     setIsFavorite(favorite)
-  }, [])
+  }, [favorite])
 
   function handleClick(e) {
     setIsFavorite(!isFavorite)

@@ -1,8 +1,5 @@
 import React from 'react'
 
-//Components
-import Input from '../../Components/Input'
-
 export default function Searcher({ handlePetsList }) {
   function search(e) {
     handlePetsList(e)
