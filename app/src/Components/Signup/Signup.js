@@ -25,8 +25,7 @@ export default function Signup({ handleSection }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (signupData.password !== signupData.confirmPassword)
-      return console.log('error')
+    if (signupData.password !== signupData.confirmPassword) return
     else
       registerWithEmailAndPassword(
         signupData.username,

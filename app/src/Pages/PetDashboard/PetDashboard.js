@@ -20,7 +20,6 @@ export default function PetDashboard() {
       .post(`${process.env.REACT_APP_URL}/pets/get-pet`, payload)
       .then((result) => {
         let { pet } = result.data.data
-        console.log(pet)
         setPetData(pet)
       })
   }

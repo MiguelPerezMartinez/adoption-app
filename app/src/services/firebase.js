@@ -28,11 +28,11 @@ const signInWithGoogle = async () => {
     await axios
       .post(`${process.env.REACT_APP_URL}/users/register-new-user`, payload)
       .then(
-        (result) => {
-          console.log(result)
+        () => {
+          return
         },
         (error) => {
-          console.log(error)
+          console.error(error)
         }
       )
   } catch (err) {
@@ -55,16 +55,10 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     const res = await createUserWithEmailAndPassword(auth, email, password)
     const user = res.user
     const payload = { email: user.email }
-    await axios
-      .post(`${process.env.REACT_APP_URL}/users/register-new-user`, payload)
-      .then(
-        (result) => {
-          console.log(result)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+    await axios.post(
+      `${process.env.REACT_APP_URL}/users/register-new-user`,
+      payload
+    )
     await addDoc(collection(db, 'Users'), {
       uid: user.uid,
       name: name,

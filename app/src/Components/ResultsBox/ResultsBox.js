@@ -7,12 +7,8 @@ export default function ResultsBox({ data, handleFavorite, favorite }) {
   return !data ? (
     ''
   ) : (
-    <div className="results-box-container">
-      <Link
-        to={`/pet-dashboard/${data.id}`}
-        className="results-box-container"
-        data-id={data.id}
-      >
+    <div className="results-box-container" data-id={data.id}>
+      <Link to={`/pet-dashboard/${data.id}`} className="results-box-container">
         <div
           id="finder-photo"
           style={{ backgroundImage: `url(${data.photo})` }}

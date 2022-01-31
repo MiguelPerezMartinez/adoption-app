@@ -1,10 +1,8 @@
 const { auth } = require('../services/firebase')
 
 async function registerNewUser(req, res) {
-  console.log(req.body)
   const users = auth.collection('Users')
   const userExist = await users.where('email', '==', req.body.email).get()
-  console.log(userExist.empty)
   if (userExist.empty) {
     const docs = await users.doc().set(req.body)
 
@@ -37,14 +35,16 @@ async function handleFavorite(req, res) {
   const petId = req.body.petId
   const users = auth.collection('Users')
   const user = await users.where('email', '==', req.body.email).get()
+  console.log(req.body.petId)
+  console.log(user.docs[0].id)
   var favList = user.docs[0].get('favorites')
+  console.log(favList)
   if (favList.includes(petId)) {
     favList = removeItemOnce(favList, petId)
   } else {
     favList.push(petId)
   }
-
-  console.log('-----> ID: ' + user.docs[0].id)
+  console.log(favList)
 
   users.doc(user.docs[0].id).update({ favorites: favList })
 

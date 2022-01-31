@@ -12,8 +12,8 @@ export default function Header() {
   return (
     <section className="header-container">
       <div></div>
-      <AiOutlineUser />
-      <AiOutlineUpload />
+      <AiOutlineUser className="option-locked" />
+      <AiOutlineUpload className="option-locked" />
       <AiOutlineLogout onClick={handleLogout} />
     </section>
   )
