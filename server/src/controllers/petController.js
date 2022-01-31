@@ -41,7 +41,39 @@ async function getPet(req, res) {
   })
 }
 
+async function getPetByName(req, res) {
+  const { name } = req.body
+  const capitalisedName = parseFirstCapitalLetter(name)
+  const pets = auth.collection('Pets')
+  const petsMatch = await pets
+    .where('name', '>=', capitalisedName)
+    .where('name', '<=', capitalisedName + '\uf8ff')
+    .get()
+  let petsList = []
+
+  petsMatch.docs.forEach((doc) => {
+    petsList.push(doc.data())
+  })
+
+  return res.status(200).send({
+    message: 'Pet find',
+    data: {
+      petsList: petsList,
+    },
+  })
+
+  function parseFirstCapitalLetter(name) {
+    const arr = name.split(' ')
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1)
+    }
+    const capitalisedName = arr.join(' ')
+    return capitalisedName
+  }
+}
+
 module.exports = {
   getAll: getAll,
   getPet: getPet,
+  getPetByName: getPetByName,
 }

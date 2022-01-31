@@ -9,10 +9,10 @@ import Loading from '../Loading'
 
 import { auth } from '../../services/firebase'
 
-export default function Finder() {
+export default function Finder({ petName }) {
   const [user, error] = useAuthState(auth)
   const navigate = useNavigate()
-  const [pets, setPets] = useState([])
+  const [pets, setPets] = useState(null)
 
   const [favList, setFavList] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
@@ -23,21 +23,32 @@ export default function Finder() {
   }, [])
 
   useEffect(() => {
-    setTimeout(
-      async () =>
-        axios.get(`${process.env.REACT_APP_URL}/pets/get-all`).then(
+    if (!petName || petName === {}) {
+      axios.get(`${process.env.REACT_APP_URL}/pets/get-all`).then(
+        (result) => {
+          let { data } = result.data
+          setIsLoaded(true)
+          setPets(data.pets)
+        },
+        (error) => {
+          setIsLoaded(false)
+        }
+      )
+    } else {
+      let payload = { name: petName }
+      axios
+        .post(`${process.env.REACT_APP_URL}/pets/get-pet-by-name`, payload)
+        .then(
           (result) => {
             let { data } = result.data
-            setIsLoaded(true)
-            setPets(data.pets)
+            setPets(data.petsList)
           },
           (error) => {
-            setIsLoaded(true)
+            setIsLoaded(false)
           }
-        ),
-      1500
-    )
-  }, [favList])
+        )
+    }
+  }, [favList, petName])
 
   async function getFavorites() {
     if (user.email) {
@@ -53,6 +64,7 @@ export default function Finder() {
 
   async function handleFavorite(e) {
     const petId = e.target.parentNode.parentNode.getAttribute('data-id')
+    console.log(petId)
     const payload = { email: user.email, petId: petId }
     await axios
       .post(`${process.env.REACT_APP_URL}/users/handle-favorite`, payload)
