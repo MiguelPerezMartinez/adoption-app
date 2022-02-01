@@ -34,7 +34,6 @@ export default function Signin({ handleSection }) {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
     logInWithEmailAndPassword(signinData.email, signinData.password)
   }
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../services/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import axios from 'axios'
 
 import Header from '../../Components/Header'
 import Searcher from '../../Components/Searcher'
